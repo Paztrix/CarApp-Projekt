@@ -1,0 +1,14 @@
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\Car.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\Car.AssemblyInfoInputs.cache
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\Car.AssemblyInfo.cs
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\Car.csproj.CoreCompileInputs.cache
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\bin\Debug\net9.0\Car.exe
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\bin\Debug\net9.0\Car.deps.json
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\bin\Debug\net9.0\Car.runtimeconfig.json
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\bin\Debug\net9.0\Car.dll
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\bin\Debug\net9.0\Car.pdb
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\Car.dll
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\refint\Car.dll
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\Car.pdb
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\Car.genruntimeconfig.cache
+C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp4\Car\Car\obj\Debug\net9.0\ref\Car.dll
