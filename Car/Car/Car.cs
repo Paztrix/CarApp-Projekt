@@ -11,6 +11,9 @@ public class Car
     private double kmPerLiter;
     private double literPrice;
 
+    //Liste til at lagre alle biler
+    public static List<Car> allCars = new List<Car>();
+
     //Get- og Set-metoder for attributterne
     public string Brand
     {
@@ -86,6 +89,8 @@ public class Car
             Console.WriteLine("Ukendt brændstoftype. Standard literpris er sat.");
             this.literPrice = 13.49;
         }
+
+        allCars.Add(this);
     }
 
     //Drive metode
@@ -141,5 +146,22 @@ public class Car
     {
         isEngineOn = false;
         Console.WriteLine("Motoren er slukket");
+    }
+
+    //Metode til at printe alle biler indtastet af brugeren
+    public static void PrintAllTeamCars()
+    {
+        if (allCars.Count == 0)
+        {
+            Console.WriteLine("Du mangler at indtaste nogle biler!");
+        } 
+        else
+        {
+            foreach (var car in allCars)
+            {
+                car.PrintCarDetails();
+                Console.WriteLine();
+            }
+        }
     }
 }

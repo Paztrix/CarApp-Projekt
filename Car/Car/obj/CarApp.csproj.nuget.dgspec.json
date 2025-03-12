@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp4\\Car\\Car\\CarApp.csproj": {}
+    "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp-Projekt\\Car\\Car\\CarApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp4\\Car\\Car\\CarApp.csproj": {
+    "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp-Projekt\\Car\\Car\\CarApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp4\\Car\\Car\\CarApp.csproj",
+        "projectUniqueName": "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp-Projekt\\Car\\Car\\CarApp.csproj",
         "projectName": "CarApp",
-        "projectPath": "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp4\\Car\\Car\\CarApp.csproj",
+        "projectPath": "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp-Projekt\\Car\\Car\\CarApp.csproj",
         "packagesPath": "C:\\Users\\Patrick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp4\\Car\\Car\\obj\\",
+        "outputPath": "C:\\Users\\Patrick\\Desktop\\Datamatiker\\1. Semester\\Programmering\\CarApp-Projekt\\Car\\Car\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

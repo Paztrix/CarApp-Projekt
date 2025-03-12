@@ -9,11 +9,11 @@
             int userYear;
             char userGear;
             bool exit = false;
-
-            Car car = null;
+            Car currentCar = null;
 
             while (!exit)
             {
+                Console.Clear();
                 Console.WriteLine("Vælg en funktion!: ");
                 Console.WriteLine("1. Indlæs bilens oplysninger");
                 Console.WriteLine("2. Start motoren");
@@ -21,73 +21,100 @@
                 Console.WriteLine("4. Beregn prisen for en køretur");
                 Console.WriteLine("5. Udskriv bilens oplysninger");
                 Console.WriteLine("6. Tjek om kilometerstanden er palindrom");
-                Console.WriteLine("7. Afslut");
+                Console.WriteLine("7. Print alle biler");
+                Console.WriteLine("8. Afslut");
                 Console.Write("Indtast valg: ");
                 string choice = Console.ReadLine();
 
                 switch (choice)
                 {
                     case "1":
-                        car = ReadCarDetails();
+                        Console.Clear();
+                        currentCar = ReadCarDetails();
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
                         break;
                     case "2":
-                        if (car != null)
+                        Console.Clear();
+                        if (currentCar != null)
                         {
-                            car.StartEngine();
+                            currentCar.StartEngine();
                         }
                         else
                         {
                             Console.WriteLine("Du skal indlæse bilens oplysninger først!");
                         }
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
                         break;
                     case "3":
-                        if (car != null)
+                        Console.Clear();
+                        if (currentCar != null)
                         {
                             Console.Write("Turens distance: ");
                             userDistance = Convert.ToDouble(Console.ReadLine());
-                            car.Drive(userDistance);
+                            currentCar.Drive(userDistance);
                         }
                         else
                         {
                             Console.WriteLine("Du skal indlæse bilens oplysninger først!");
                         }
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
                         break;
                     case "4":
-                        if (car != null)
+                        Console.Clear();
+                        if (currentCar != null)
                         {
                             Console.Write("Turens distance: ");
                             userDistance = Convert.ToDouble(Console.ReadLine());
-                            car.CalculateTripPrice(userDistance, car.KmPerLiter);
+                            currentCar.CalculateTripPrice(userDistance, currentCar.KmPerLiter);
                         }
                         else
                         {
                             Console.WriteLine("Du skal indlæse bilens oplysninger først!");
                         }
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
                         break;
                     case "5":
-                        if (car != null)
+                        Console.Clear();
+                        if (currentCar != null)
                         {
-                            car.PrintCarDetails();
+                            currentCar.PrintCarDetails();
                         }
                         else
                         {
                             Console.WriteLine("Du skal indlæse bilens oplysninger først!");
                         }
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
                         break;
                     case "6":
-                        if (car != null)
+                        Console.Clear();
+                        if (currentCar != null)
                         {
-                            IsPalindrome(car.Odometer);
+                            IsPalindrome(currentCar.Odometer);
                         } else
                         {
                             Console.WriteLine("Du skal indlæse bilens oplysninger først!");
                         }
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
                         break;
                     case "7":
+                        Console.Clear();
+                        Car.PrintAllTeamCars();
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
+                        break;
+                    case "8":
                         exit = true;
                         break;
                     default:
                         Console.WriteLine("Ugyldigt valg, prøv igen!");
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
                         break;
                 }
             }
@@ -97,14 +124,18 @@
         static void IsPalindrome(double odometer)
         {
             string odometerStr = odometer.ToString();
-            string reversed = new string(odometerStr.Reverse().ToArray());
+            string odometerReversed = new string(odometerStr.Reverse().ToArray());
 
-            if (odometerStr == reversed)
+            if (odometerStr == odometerReversed)
             {
                 Console.WriteLine($"Kilometerstanden {odometer}, er et palindrom");
+                Console.WriteLine($"Odometer: {odometerStr}");
+                Console.WriteLine($"Odometer omvendt: {odometerReversed}");
             } else
             {
                 Console.WriteLine($"Kilometerstanden {odometer}, er ikke et palindrom");
+                Console.WriteLine($"Odometer: {odometerStr}");
+                Console.WriteLine($"Odometer omvendt: {odometerReversed}");
             }
         }
 
