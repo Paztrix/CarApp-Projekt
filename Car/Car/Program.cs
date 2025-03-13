@@ -11,9 +11,29 @@
             bool exit = false;
             Car currentCar = null;
 
+            List<Trip> trips = new List<Trip>()
+            {
+                new Trip ( 50, DateTime.Now.Date, DateTime.Now, DateTime.Now.AddHours(1) ),
+                new Trip ( 30, DateTime.Now.Date, DateTime.Now, DateTime.Now.AddMinutes(30) ),
+                new Trip ( 100, DateTime.Now.Date, DateTime.Now, DateTime.Now.AddHours(2) )
+            };
+
+            Car myCar = new Car("Toyota", "Corolla", 2025, 'A', 15.0, FuelType.Benzin, 10000);
+            myCar.StartEngine();
+
+            foreach (var trip in trips)
+            {
+                myCar.Drive(trip);
+            }
+            // Print car details
+            myCar.PrintCarDetails();  // Display car info
+
+            // Print all trips for the car
+            myCar.PrintAllTrips();  // Display all trips added to the car
+
             while (!exit)
             {
-                Console.Clear();
+                //Console.Clear();
                 Console.WriteLine("Vælg en funktion!: ");
                 Console.WriteLine("1. Indlæs bilens oplysninger");
                 Console.WriteLine("2. Start motoren");
@@ -22,7 +42,8 @@
                 Console.WriteLine("5. Udskriv bilens oplysninger");
                 Console.WriteLine("6. Tjek om kilometerstanden er palindrom");
                 Console.WriteLine("7. Print alle biler");
-                Console.WriteLine("8. Afslut");
+                Console.WriteLine("8. Print alle ture");
+                Console.WriteLine("9. Afslut");
                 Console.Write("Indtast valg: ");
                 string choice = Console.ReadLine();
 
@@ -53,7 +74,11 @@
                         {
                             Console.Write("Turens distance: ");
                             userDistance = Convert.ToDouble(Console.ReadLine());
-                            currentCar.Drive(userDistance);
+
+                            DateTime currentTime = DateTime.Now;
+                            Trip newTrip = new Trip(userDistance, currentTime.Date, currentTime, currentTime.AddHours(1));
+
+                            currentCar.Drive(newTrip);
                         }
                         else
                         {
@@ -68,7 +93,12 @@
                         {
                             Console.Write("Turens distance: ");
                             userDistance = Convert.ToDouble(Console.ReadLine());
-                            currentCar.CalculateTripPrice(userDistance, currentCar.KmPerLiter);
+
+                            DateTime currentTime = DateTime.Now;
+                            Trip newTrip = new Trip(userDistance, currentTime.Date, currentTime, currentTime.AddHours(1));
+
+                            double tripPrice = newTrip.CalculateTripPrice(currentCar.LiterPrice, currentCar.KmPerLiter);
+                            Console.WriteLine($"Prisen for turen er: {tripPrice:F2} kr.");
                         }
                         else
                         {
@@ -109,6 +139,19 @@
                         Console.ReadKey();
                         break;
                     case "8":
+                        Console.Clear();
+                        if (currentCar != null)
+                        {
+                            currentCar.PrintAllTrips();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Du skal indlæse bilens oplysninger først!");
+                        }
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
+                        break;
+                    case "9":
                         exit = true;
                         break;
                     default:
@@ -154,8 +197,30 @@
             Console.Write("Indtast geartype (A for automatisk, M for manuel): ");
             char userGear = Console.ReadLine()[0];
 
-            Console.Write("Indtast brændstoftype (Benzin/Diesel): ");
-            string userFuelType = Console.ReadLine();
+            Console.Write("Indtast brændstoftype (Benzin/Diesel/Electrisk/Hybrid): ");
+            string userFuelType = Console.ReadLine().ToLower();
+
+            //Switch-case til at sammenligne input med enum FuelType og finde brændstofpris
+            FuelType fuelType;
+            switch (userFuelType)
+            {
+                case "benzin":
+                    fuelType = FuelType.Benzin;
+                    break;
+                case "diesel":
+                    fuelType = FuelType.Diesel;
+                    break;
+                case "electrisk":
+                    fuelType = FuelType.Electrisk;
+                    break;
+                case "hybrid":
+                    fuelType = FuelType.Hybrid;
+                    break;
+                default:
+                    Console.WriteLine("Ugyldig brændstoftype, standarden 'Benzin' bliver brugt.");
+                    fuelType = FuelType.Benzin; // Standard brænstoftype
+                    break;
+            }
 
             Console.Write("Indtast km per liter: ");
             double userKmPerLiter = Convert.ToDouble(Console.ReadLine());
@@ -163,7 +228,7 @@
             Console.Write("Indtast kilometerstand: ");
             double userOdometer = Convert.ToDouble(Console.ReadLine());
 
-            Car car = new Car(userBrand, userModel, userYear, userGear, userKmPerLiter, userFuelType, userOdometer);
+            Car car = new Car(userBrand, userModel, userYear, userGear, userKmPerLiter, fuelType, userOdometer);
             return car;
         }
     }

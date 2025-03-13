@@ -1,3 +1,10 @@
+public enum FuelType
+{
+    Benzin,
+    Diesel,
+    Electrisk,
+    Hybrid
+}
 public class Car
 {
     //Private attributter for Car klassen
@@ -6,65 +13,37 @@ public class Car
     private int year;
     private char gear;
     private double odometer;
-    private string fuelType;
+    private FuelType fuelType;
     private bool isEngineOn;
     private double kmPerLiter;
     private double literPrice;
 
+    //Liste over ture bilen har kørt
+    public List<Trip> trips = new List<Trip>();
     //Liste til at lagre alle biler
     public static List<Car> allCars = new List<Car>();
 
     //Get- og Set-metoder for attributterne
-    public string Brand
-    {
-        get { return brand; }
-        set { brand = value; }
-    }
+    public string Brand { get { return brand; } set { brand = value; } }
 
-    public string Model
-    {
-        get { return model; }
-        set { model = value; }
-    }
+    public string Model { get { return model; } set { model = value; } }
 
-    public int Year
-    {
-        get { return year; }
-        set { year = value; }
-    }
+    public int Year { get { return year; } set { year = value; } }
 
-    public char Gear
-    {
-        get { return gear; }
-        set { gear = value; }
-    }
+    public char Gear { get { return gear; } set { gear = value; } }
 
-    public double Odometer
-    {
-        get { return odometer; }
-        set { odometer = value; }
-    }
+    public double Odometer { get { return odometer; } set { odometer = value; } }
 
-    public string FuelType
-    {
-        get { return fuelType; }
-        set { fuelType = value; }
-    }
+    public FuelType FuelType { get { return fuelType; } set { fuelType = value; } }
 
-    public bool IsEngineOn
-    {
-        get { return isEngineOn; }
-        set { isEngineOn = value; }
-    }
+    public bool IsEngineOn { get { return isEngineOn; } set { isEngineOn = value; } }
 
-    public double KmPerLiter
-    {
-        get { return kmPerLiter; }
-        set { kmPerLiter = value; }
-    }
+    public double KmPerLiter { get { return kmPerLiter; } set { kmPerLiter = value; } }
+
+    public double LiterPrice { get { return literPrice; } }
 
     //Konstruktør, der tager de nødvendige parametre
-    public Car(string brand, string model, int year, char gear, double kmPerLiter, string fuelType, double odometer)
+    public Car(string brand, string model, int year, char gear, double kmPerLiter, FuelType fuelType, double odometer)
     {
         this.brand = brand;
         this.model = model;
@@ -76,30 +55,37 @@ public class Car
         this.kmPerLiter = kmPerLiter;
 
         //Sæt literprisen efter brændstoftypen
-        if (fuelType.ToLower() == "benzin")
+        switch (fuelType)
         {
-            this.literPrice = 13.49;
-        }
-        else if (fuelType.ToLower() == "diesel")
-        {
-            this.literPrice = 12.29;
-        }
-        else
-        {
-            Console.WriteLine("Ukendt brændstoftype. Standard literpris er sat.");
-            this.literPrice = 13.49;
+            case FuelType.Benzin:
+                this.literPrice = 13.49;
+                break;
+            case FuelType.Diesel:
+                this.literPrice = 12.29;
+                break;
+            case FuelType.Electrisk:
+                this.literPrice = 9.95;
+                break;
+            case FuelType.Hybrid:
+                this.literPrice = 10.99;
+                break;
+            default:
+                Console.WriteLine("Unknown fuel type. Default liter price is set.");
+                this.literPrice = 13.49;
+                break;
         }
 
         allCars.Add(this);
     }
 
     //Drive metode
-    public void Drive(double distance)
+    public void Drive(Trip newTrip)
     {
         if (isEngineOn)
         {
-            odometer += distance;
-            Console.WriteLine($"Du kørte {distance} km. Odometer: {odometer} km.");
+            odometer += newTrip.Distance;
+            trips.Add(newTrip);
+            Console.WriteLine($"Turen på {newTrip.Distance} km er tilføjet til listen. Odometer er nu: {odometer} km.");
         }
         else
         {
@@ -107,19 +93,21 @@ public class Car
         }
     }
 
-    //CalculateTripPrice metode
-    public void CalculateTripPrice(double distance, double userKmPerLiter)
+    //Udskriver alle ture for bilen og kalder metoden PrintTripDetails() for hver tur
+    public void PrintAllTrips()
     {
-        if (userKmPerLiter == 0)
+        if (trips.Count == 0)
         {
-            Console.WriteLine("Km per liter værdi kan ikke være 0, prøv igen!");
+            Console.WriteLine("Der er ikke registreret nogle ture!");
             return;
         }
 
-        double fuelNeeded = distance / userKmPerLiter;
-        double tripCost = fuelNeeded * literPrice;
-
-        Console.WriteLine($"Brændstofudgifterne for {distance} km, er {tripCost:F2} kr.");
+        Console.WriteLine("Alle ture for din nuværende bil");
+        foreach (Trip trip in trips)
+        {
+            trip.PrintTripDetails();
+            Console.WriteLine();
+        }
     }
 
     //PrintCarDetails metode
@@ -153,7 +141,7 @@ public class Car
     {
         if (allCars.Count == 0)
         {
-            Console.WriteLine("Du mangler at indtaste nogle biler!");
+            Console.WriteLine("Du mangler at registrere nogle biler!");
         } 
         else
         {
