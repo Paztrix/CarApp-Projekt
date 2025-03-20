@@ -23,7 +23,7 @@ public class Car
     //Liste til at lagre alle biler
     public static List<Car> allCars = new List<Car>();
 
-    //Get- og Set-metoder for attributterne
+    //Get- og Set-metoder for  Car attributterne
     public string Brand { get { return brand; } set { brand = value; } }
 
     public string Model { get { return model; } set { model = value; } }
@@ -83,13 +83,40 @@ public class Car
     {
         if (isEngineOn)
         {
+            double fuelUsed = newTrip.Distance / kmPerLiter;
+            double tripPrice = fuelUsed * literPrice;
+
             odometer += newTrip.Distance;
+            newTrip.FuelUsed = fuelUsed;
+            newTrip.TripPrice = tripPrice;
             trips.Add(newTrip);
+
+            Console.WriteLine($"Brændstofforbrug: {fuelUsed:F2} liter");
+            Console.WriteLine($"Turpris: {tripPrice:F2} kroner");
             Console.WriteLine($"Turen på {newTrip.Distance} km er tilføjet til listen. Odometer er nu: {odometer} km.");
         }
         else
         {
             Console.WriteLine("Motoren er slukket.");
+        }
+    }
+
+    //Ítererer gennem listen trips og udskriver alle trip der er lige med brugerens forespurgte dato
+    public void GetTripByDate(DateTime searchDate)
+    {
+        bool tripFound = false;
+        foreach (Trip trip in trips)
+        {
+            if (trip.TripDate.Date == searchDate.Date)
+            {
+                trip.PrintTripDetails();
+                tripFound = true;
+            }
+        }
+
+        if (!tripFound)
+        {
+            Console.WriteLine("Der blev ikke fundet nogle ture på den angivne dato.");
         }
     }
 
@@ -113,6 +140,7 @@ public class Car
     //PrintCarDetails metode
     public void PrintCarDetails()
     {
+        Console.WriteLine("--- Information om bilen ---");
         Console.WriteLine("Bilmærke: " + brand);
         Console.WriteLine("Bilmodel: " + model);
         Console.WriteLine("Årgang: " + year);

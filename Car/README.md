@@ -3,9 +3,14 @@ Program indeholder Main-klassen
 Car indeholder Car-klassen
 
 2. Upload:
-Tilføjet en PrintAllTeamCars-metode til Cars-klassen
+Implementeret en PrintAllTeamCars-metode til Cars-klassen
 Ændret i Menu med Console.Clear();
 
-3. Upload: Uploader til branch Trip-objekter-i-main
+3. Upload:
 Tilføjet Trip-klasse og fuel beregninger
 Implementeret enum for FuelType
+
+4. Upload:
+Updateret Drive-metode i main i Car-klassen
+Implementeret GetTripByDate-metode i Car-klassen
+Implementeret unit-test i MSTest for Drive- og GetTripByDate-metode

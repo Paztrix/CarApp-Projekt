@@ -1,0 +1,16 @@
+2025-03-20T10:55:54.7537453+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.4.3+c252b64ad913ea9411fc5d17bfd5580d2d061497
+2025-03-20T10:55:54.7834861+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-03-20T10:55:54.7863416+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-03-20T10:55:54.7863530+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 10:55:54.657
+2025-03-20T10:55:54.7901809+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 6588
+2025-03-20T10:55:54.7902614+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 9.0.1
+2025-03-20T10:55:54.7903074+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\9.0.1\System.Private.CoreLib.dll
+2025-03-20T10:55:54.7903349+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-03-20T10:55:54.7903414+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp-Projekt\Car\CarDriveTest\bin\Debug\net9.0\CarDriveTest.dll
+2025-03-20T10:55:54.7906446+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp-Projekt\Car\CarDriveTest\bin\Debug\net9.0\Log --results-directory C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp-Projekt\Car\TestResults --client-port 61481'
+2025-03-20T10:55:54.7940821+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-03-20T10:55:54.8533248+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-03-20T10:55:54.8614813+00:00 Microsoft.Testing.Platform.Configurations.JsonConfigurationSource+JsonConfigurationProvider INFORMATION Config file 'C:\Users\Patrick\Desktop\Datamatiker\1. Semester\Programmering\CarApp-Projekt\Car\CarDriveTest\bin\Debug\net9.0\CarDriveTest.testconfig.json' not found.
+2025-03-20T10:55:54.8652163+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable:  VSTest mode: False
+2025-03-20T10:55:55.4344808+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: 'MSTestExtension' Version: '3.6.4' DisplayName: 'MSTest' Description: 'MSTest Framework for Microsoft Testing Platform'
+2025-03-20T10:55:55.5261554+00:00 Microsoft.Testing.Extensions.VSTestBridge.ObjectModel.MessageLoggerAdapter WARNING Runsettings attribute 'MaxCpuCount' is not supported by Microsoft.Testing.Platform and will be ignored

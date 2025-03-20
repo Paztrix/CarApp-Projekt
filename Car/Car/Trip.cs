@@ -5,7 +5,11 @@
     private DateTime startTime;
     private DateTime endTime;
 
-    //get set for attributter
+    //get set for brændstof og pris
+    public double FuelUsed { get; set; }
+    public double TripPrice { get; set; }
+
+    //get set for Trip attributter
     public double Distance { get { return distance; } set { distance = value; } }
 
     public DateTime TripDate { get { return tripDate; } set { tripDate = value; } }
@@ -58,7 +62,7 @@
     //Udskriver turens oplysninger til console
     public void PrintTripDetails()
     {
-        Console.WriteLine("Turen: ");
+        Console.WriteLine("--- Information om turen/turene ---");
         Console.WriteLine($"Dato: {tripDate.ToShortDateString()}");
         Console.WriteLine($"Starttid: {startTime.ToShortTimeString()}");
         Console.WriteLine($"Sluttid: {endTime.ToShortTimeString()}");

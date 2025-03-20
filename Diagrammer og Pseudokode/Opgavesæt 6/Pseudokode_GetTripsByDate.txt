@@ -1,0 +1,15 @@
+Gennemgå alle Trip objekter
+Finde de ture, der blev gennemført på en specifik dato
+Benytte et loop til at søge og gennemgå listen
+
+Pseudokode:
+Method: GetTripsByDate(dato):
+    For each trip in list trips:
+        If trip date is equal to requested trip: 
+            Display trip
+
+    Stop execution
+
+Implementering:
+
+Unit Test:

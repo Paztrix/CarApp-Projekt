@@ -1,4 +1,6 @@
-﻿namespace CarApp
+﻿using System.Globalization;
+
+namespace CarApp
 {
     internal class Program
     {
@@ -33,8 +35,8 @@
 
             while (!exit)
             {
-                //Console.Clear();
-                Console.WriteLine("Vælg en funktion!: ");
+                Console.Clear();
+                Console.WriteLine("--- Car System Menu ---");
                 Console.WriteLine("1. Indlæs bilens oplysninger");
                 Console.WriteLine("2. Start motoren");
                 Console.WriteLine("3. Kør en tur");
@@ -43,7 +45,8 @@
                 Console.WriteLine("6. Tjek om kilometerstanden er palindrom");
                 Console.WriteLine("7. Print alle biler");
                 Console.WriteLine("8. Print alle ture");
-                Console.WriteLine("9. Afslut");
+                Console.WriteLine("9. Print ture efter dato");
+                Console.WriteLine("10. Afslut");
                 Console.Write("Indtast valg: ");
                 string choice = Console.ReadLine();
 
@@ -75,8 +78,25 @@
                             Console.Write("Turens distance: ");
                             userDistance = Convert.ToDouble(Console.ReadLine());
 
-                            DateTime currentTime = DateTime.Now;
-                            Trip newTrip = new Trip(userDistance, currentTime.Date, currentTime, currentTime.AddHours(1));
+                            Console.Write("Indtast turens dato (dd-mm-yyyy): ");
+                            DateTime tripDate;
+                            while (!DateTime.TryParseExact(Console.ReadLine(), "dd-mm-yyyy", null, System.Globalization.DateTimeStyles.None, out tripDate))
+                            {
+                                Console.WriteLine("Ugyldig dato!");
+                                Console.WriteLine("Indtast turen dato (dd-mm-yyyy): ");
+                            }
+
+                            Console.Write("Indtast turens starttidspunkt (HH:mm): ");
+                            DateTime startTime;
+                            while (!DateTime.TryParseExact(Console.ReadLine(), "HH:mm", null, System.Globalization.DateTimeStyles.None, out startTime))
+                            {
+                                Console.WriteLine("Ugyldigt starttidspunkt!");
+                                Console.WriteLine("Indtast starttidspunkt (HH:mm)");
+                            }
+
+                            DateTime endTime = startTime.AddHours(1);
+
+                            Trip newTrip = new Trip(userDistance, tripDate, startTime, endTime);
 
                             currentCar.Drive(newTrip);
                         }
@@ -152,6 +172,26 @@
                         Console.ReadKey();
                         break;
                     case "9":
+                        Console.Clear();
+                        if (currentCar != null)
+                        {
+                            Console.Write("Indtast den dato du gerne vil finde ture fra (dd-mm-yyyy): ");
+                            DateTime searchDate;
+                            while (!DateTime.TryParseExact(Console.ReadLine(), "dd-mm-yyyy", null, DateTimeStyles.None, out searchDate))
+                            {
+                                Console.WriteLine("Ugyldig dato!");
+                                Console.Write("Indtast den dato du gerne vil finde ture fra (dd-mm-yyyy): ");
+                            }
+
+                            currentCar.GetTripByDate(searchDate);
+                        } else
+                        {
+                            Console.WriteLine("Du skal indlæse bilens oplysninger først!");
+                        }
+                        Console.WriteLine("Tryk en vilkårlig tast for at vende tilbage til menuen...");
+                        Console.ReadKey();
+                        break;
+                    case "10":
                         exit = true;
                         break;
                     default:
